@@ -3,8 +3,10 @@
 
 
 body{
-    background-color:rgba(230, 95, 85, 0.4);
+    background-color:rgba(141, 131, 248, 0.4);
     font-family: 'Roboto Slab', serif;
+    color: #fff;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #title{
@@ -15,5 +17,57 @@ body{
     top: 0;
     padding-top: 2%;
     padding-bottom: 2%;
-    background-color: rgba(255, 19, 2, 0.7);
+    background-color: rgba(162, 157, 255, 0.7);
+    border: #000 0.6px solid;
+}
+#addUserTitle{
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    top: 9%;
+    
+}
+#addUserTitle h1{
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 38%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 30px 30px 30px 30px;
+}
+
+#userBox{
+    width: 100%;
+    position: fixed;
+    top: 20%;
+    text-align: center;
+    left: 0;
+}
+#userBox span{
+    font-size: 0.8rem;
+}
+
+#user, #password {
+    border-radius: 10px 10px 10px 10px;
+    border: #000 solid 0.8px;
+}
+
+
+#userAddButtonBox{
+    margin-left: 4%;
+}
+#userAddButton{
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 10px 10px 10px 10px;
+    border: #000 solid 0.8px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#userAddButton:hover{
+    background-color: #000;
+    color: #fff;
 }
