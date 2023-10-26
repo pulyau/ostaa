@@ -17,3 +17,12 @@ function addUser() {
         });
     }
 }
+
+function getUsers() {
+    let url = 'http://localhost/get/users';
+    fetch(url).then((response) => {
+    return response.json();
+    }).catch( (error) => {
+    console.log(error);
+    });
+}

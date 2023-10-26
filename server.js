@@ -24,6 +24,8 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   username: String,
   password: String,
+  listings: Array,
+  purchases: Array,
 });
 
 var User = mongoose.model('User', userSchema );   
@@ -33,10 +35,17 @@ app.use(bp.json());
 app.post('/add/user', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-  let user = new User({username: username, password: password});
+  let user = new User({username: username, password: password, listings: [], purchases: []});
   user.save();
   res.end('Got the name');
 });
 
+
+app.get('/get/users', function (req, res) {
+  let p = User.find({}).exec();
+  p.then((documents) => {
+    res.json(documents);
+  });
+});
 
 app.listen(port, ()=>{console.log(`Success!!!`)});
