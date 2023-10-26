@@ -19,14 +19,24 @@ db.on('error', () => { console.log('MongoDB connection error:') });
 
 app.use(express.static('public_html'));
 
-app.listen(port, ()=>{console.log(`Success!!!`)});
+var Schema = mongoose.Schema;
 
+var userSchema = new Schema({
+  username: String,
+  password: String,
+});
+
+var User = mongoose.model('User', userSchema );   
 
 app.use(bp.json());
 
 app.post('/add/user', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-  console.log(username, password)
+  let user = new User({username: username, password: password});
+  user.save();
   res.end('Got the name');
 });
+
+
+app.listen(port, ()=>{console.log(`Success!!!`)});
