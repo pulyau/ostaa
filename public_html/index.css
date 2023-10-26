@@ -8,7 +8,7 @@ body{
     color: #fff;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-
+/*-----------------Title Section------------------*/
 #title{
     position: fixed;
     width: 100%;
@@ -20,6 +20,8 @@ body{
     background-color: rgba(162, 157, 255, 0.7);
     border: #000 0.6px solid;
 }
+
+/*------------------Add User Section---------------------*/
 #addUserTitle{
     position: fixed;
     text-align: center;
@@ -34,30 +36,32 @@ body{
     left: 38%;
     padding-left: 5%;
     padding-right: 5%;
-    border-radius: 30px 30px 30px 30px;
+    border-radius: 0px 30px 0px 30px;
+    border: solid #000 0.8px;
 }
 
 #userBox{
-    width: 100%;
+    width: 60%;
     position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 20%;
-    text-align: center;
+    text-align: right;
     left: 0;
+    color: #000;
+    text-shadow: none;
 }
 #userBox span{
     font-size: 0.8rem;
 }
 
-#user, #password {
+#user, #password, #itemTitle, #descItem, #statusItem, #priceItem, #imageItem, #forUserItem{
     border-radius: 10px 10px 10px 10px;
     border: #000 solid 0.8px;
+    margin-bottom: 15px;
 }
 
-
-#userAddButtonBox{
-    margin-left: 4%;
-}
-#userAddButton{
+#userAddButton, #addItemButton{
     padding-left: 5%;
     padding-right: 5%;
     border-radius: 10px 10px 10px 10px;
@@ -65,9 +69,82 @@ body{
     background-color: #fff;
     cursor: pointer;
     transition: 0.3s;
+   
 }
 
-#userAddButton:hover{
+#userAddButton:hover, #addItemButton:hover{
     background-color: #000;
     color: #fff;
+}
+
+#divider{
+    width: 22%;
+    position: fixed;
+    left: 38%;
+    top: 36.5%;
+    height: 1%;
+    background-color: rgba(162, 157, 255, 0.7);
+    border: solid #000 0.5px;
+    border-radius: 0px 30px 30px 0px;
+}
+
+
+/* -------------- Add Item Section --------------------*/
+#addItemBox{
+    position: fixed;
+    text-align: right;
+    color: #000;
+    text-shadow: none;
+}
+
+#addItemTItle{
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    top: 36%;
+    
+}
+#addItemTItle h1{
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 38%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 0px 30px 0px 30px;
+    border: solid #000 0.8px;
+}
+
+#addItemBox{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 47%;
+    text-align: right;
+    left: 0;
+ 
+}
+
+#addItemBox span{
+    font-size: 0.8rem;
+}
+
+
+/*-------------Footer Section------------*/
+#footer{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(162, 157, 255, 0.7);
+    height: 10%;
+    border: solid #000 0.5px;
+    font-size: 0.6rem;
+    color: #000;
+    text-shadow: none;
+    justify-content: center;
+    align-items: center;
+    
 }
