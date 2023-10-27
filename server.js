@@ -48,13 +48,23 @@ var Item = mongoose.model('Item', itemSchema);
 app.use(bp.json());
 // ----------------------------REQUEST SECTION----------------------------
 // POST method. Adds a new user with username and password and adds to the database
-// INCOMPLETE, need to check if the user already exists
 app.post('/add/user', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-  let user = new User({username: username, password: password, listings: [], purchases: []});
-  user.save();
-  res.end('Got the name');
+  let p = User.find({username: username}).exec()
+  p.then((result) => {
+    // Checks if the user already exists
+    if (result.length != 0) {
+      res.end("USER ALREADY EXISTS");
+    } else {
+      let user = new User({username: username, password: password, listings: [], purchases: []});
+      user.save();
+      res.end('USER SUCCESSFULLY SAVED');
+    }
+  }).catch((err) => {
+    res.end("DATABASE SAVE ERROR");
+  })
+  
 });
 
 // POST method. Adds a new item to the databse
@@ -67,7 +77,7 @@ app.post('/add/item', (req, res) => {
 app.get('/get/users', function (req, res) {
   let p = User.find({}).exec();
   p.then((documents) => {
-    res.json(documents);
+    res.end(JSON.stringify(documents));
   });
 });
 

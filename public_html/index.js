@@ -14,7 +14,8 @@ function addUser() {
             headers: { 'Content-Type': 'application/json'}
         });
         p.then((response) => {
-            return response.text();
+            console.log(response.body);
+            return response.body.text;
         }).catch((err) => {
             console.log(err);
         });
