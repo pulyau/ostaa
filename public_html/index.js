@@ -48,22 +48,6 @@ function addItem() {
         });
     }
 }
-// Gets called when the uses the path in the url
-function getUser() {
-    // Need to change to IP address when uploading to Digitalocean
-    let url = 'get/users';
-    fetch(url).then((response) => {
-        // returns the list of all the users in the database
-        return response.json()
-    .then((obj) => {
-        console.log(obj);
-    }) 
-    }).catch( (error) => {
-    console.log(error);
-    });
-}
-
-
 
 // Gets called when the uses the path in the url
 function getItems() {
