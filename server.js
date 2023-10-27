@@ -46,7 +46,7 @@ var Item = mongoose.model('Item', itemSchema);
 
 // Using json 
 app.use(bp.json());
-
+// ----------------------------REQUEST SECTION----------------------------
 // POST method. Adds a new user with username and password and adds to the database
 // INCOMPLETE, need to check if the user already exists
 app.post('/add/user', (req, res) => {
