@@ -40,7 +40,8 @@ var itemSchema = new Schema({
   description: String,
   image: String,
   price: Number,
-  stat: String
+  stat: String,
+  user: String
 });
 var Item = mongoose.model('Item', itemSchema);
 
@@ -55,27 +56,53 @@ app.post('/add/user', (req, res) => {
   p.then((result) => {
     // Checks if the user already exists
     if (result.length != 0) {
-      res.end("USER ALREADY EXISTS");
+      res.end(JSON.stringify("USER ALREADY EXISTS"));
     } else {
       let user = new User({username: username, password: password, listings: [], purchases: []});
       user.save();
       res.end('USER SUCCESSFULLY SAVED');
     }
   }).catch((err) => {
-    res.end("DATABASE SAVE ERROR");
+    res.end("USER SAVE ERROR");
   })
   
 });
 
 // POST method. Adds a new item to the databse
-// INCOMPLETE
 app.post('/add/item', (req, res) => {
-  res.end('Got the name');
+  let title = req.body.title;
+  let desc = req.body.desc;
+  let image = req.body.image;
+  let price = req.body.price; 
+  let status = req.body.status;
+  let userItem = req.body.userItem;
+
+  let p = User.find({username: userItem}).exec();
+  p.then((contents) => {
+    // checks if the username exists in the database
+    if (contents.length != 0) {
+      let item = new Item({title: title, description: desc, image: image, price: price, status: status, user: userItem});
+      item.save();
+      res.end("ITEM SUCCESSFULLY SAVED");
+    } else {
+      res.end("USER DOES NOT EXIST")
+    }
+  }).catch((err) => {
+    res.end("ITEM SAVE ERROR")
+  })
 });
 
 // GET method. Returns the json file containing all the users
 app.get('/get/users', function (req, res) {
   let p = User.find({}).exec();
+  p.then((documents) => {
+    res.end(JSON.stringify(documents));
+  });
+});
+
+// GET method. Returns the json file containing all the users
+app.get('/get/items', function (req, res) {
+  let p = Item.find({}).exec();
   p.then((documents) => {
     res.end(JSON.stringify(documents));
   });

@@ -14,7 +14,7 @@ function addUser() {
             headers: { 'Content-Type': 'application/json'}
         });
         p.then((response) => {
-            console.log(response.body);
+            console.log(response);
             return response.body.text;
         }).catch((err) => {
             console.log(err);
@@ -31,7 +31,7 @@ function addItem() {
     var status = document.getElementById("statusItem").value;
     var userItem = document.getElementById("forUserItem").value;
     // Alert the user if any of the entries is blank
-    if (title == "" || info == "" || image == "" || price == "" || status == "" || userItem == "") {
+    if (title == "" || desc == "" || image == "" || price == "" || status == "" || userItem == "") {
         window.alert("Please fill out all the information")
     } else {
         let info = {title: title, desc: desc, image: image, price: price, status: status, userItem: userItem}
@@ -53,6 +53,18 @@ function addItem() {
 function getUsers() {
     // Need to change to IP address when uploading to Digitalocean
     let url = 'http://localhost/get/users';
+    fetch(url).then((response) => {
+    // returns the list of all the users in the database
+    return response.json();
+    }).catch( (error) => {
+    console.log(error);
+    });
+}
+
+// Gets called when the uses the path in the url
+function getItems() {
+    // Need to change to IP address when uploading to Digitalocean
+    let url = 'http://localhost/get/items';
     fetch(url).then((response) => {
     // returns the list of all the users in the database
     return response.json();
