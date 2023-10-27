@@ -77,6 +77,7 @@ app.post('/add/item', (req, res) => {
   let status = req.body.status;
   let userItem = req.body.userItem;
 
+  // return the list of all users containing the user in the request
   let p = User.find({username: userItem}).exec();
   p.then((contents) => {
     // checks if the username exists in the database
@@ -100,7 +101,7 @@ app.get('/get/users', function (req, res) {
   });
 });
 
-// GET method. Returns the json file containing all the users
+// GET method. Returns the json file containing all the items
 app.get('/get/items', function (req, res) {
   let p = Item.find({}).exec();
   p.then((documents) => {
