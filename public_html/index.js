@@ -15,7 +15,7 @@ function addUser() {
         });
         p.then((response) => {
             console.log(response);
-            return response.body.text;
+            return response;
         }).catch((err) => {
             console.log(err);
         });
@@ -48,18 +48,22 @@ function addItem() {
         });
     }
 }
-
 // Gets called when the uses the path in the url
-function getUsers() {
+function getUser() {
     // Need to change to IP address when uploading to Digitalocean
-    let url = 'http://localhost/get/users';
+    let url = 'get/users';
     fetch(url).then((response) => {
-    // returns the list of all the users in the database
-    return response.json();
+        // returns the list of all the users in the database
+        return response.json()
+    .then((obj) => {
+        console.log(obj);
+    }) 
     }).catch( (error) => {
     console.log(error);
     });
 }
+
+
 
 // Gets called when the uses the path in the url
 function getItems() {
