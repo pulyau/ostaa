@@ -107,7 +107,7 @@ app.get('/get/users', function (req, res) {
 });
 
 // GET method. Returns the json file containing all the items
-app.get('get/items', function (req, res) {
+app.get('/get/items', function (req, res) {
   let p = Item.find({}).exec();
   p.then((documents) => {
     res.end(JSON.stringify(documents, null, 2));
