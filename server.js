@@ -13,7 +13,7 @@ const express = require("express");
 const app = express();
 const port = 80;
 
-// Seeting up the databse using mongoose and mongoDB
+// Seeting up the database using mongoose and mongoDB
 const db  = mongoose.connection;
 const mongoDBURL = 'mongodb://127.0.0.1/ostaaItems';
 mongoose.connect(mongoDBURL, { useNewUrlParser: true });
@@ -116,5 +116,5 @@ app.get('/get/items', function (req, res) {
 
 
 
-// Listening to port 80
+// Listening to the port 80
 app.listen(port, ()=>{console.log(`Success!!!`)});
