@@ -51,15 +51,3 @@ function addItem() {
         });
     }
 }
-
-// Gets called when the uses the path in the url
-function getItems() {
-    // Need to change to IP address when uploading to Digitalocean
-    let url = 'http://localhost/get/items';
-    fetch(url).then((response) => {
-    // returns the list of all the users in the database
-    return response.json();
-    }).catch( (error) => {
-    console.log(error);
-    });
-}

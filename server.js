@@ -114,7 +114,49 @@ app.get('/get/items', function (req, res) {
   });
 });
 
+// GET method. Returns the json file containing all users whose username has the substring keyword
+app.get('/search/users/:keyword', function (req, res) {
+  let p = User.find({ username : { $regex : req.params.keyword } }).exec();
+  p.then((documents) => {
+    res.end(JSON.stringify(documents, null, 2));
+  });
+});
 
+// GET method. Returns the json file containing all items whose description has the substring keyword
+app.get('/search/items/:keyword', function (req, res) {
+  let p = Item.find({ description : { $regex : req.params.keyword } }).exec();
+  p.then((documents) => {
+    res.end(JSON.stringify(documents, null, 2));
+  });
+});
+// Gets a json file containing all listings of the username
+app.get('/get/listings/:username', function (req, res) {
+  let p = User.find({username: req.params.username}).exec();
+  p.then((documents) => {
+    if (documents.length != 0) {
+      let p1 = documents[0].listings
+      res.end(JSON.stringify(p1, null, 2));
+    } else {
+      res.end("USER DOES NOT EXIST")
+    }
+  }).catch((err) => {
+    res.end('DATABSE ERROR');
+  })
+})
+// Gets a json file containing all purchases of the username
+app.get('/get/purchases/:username', function (req, res) {
+  let p = User.find({username: req.params.username}).exec();
+  p.then((documents) => {
+    if (documents.length != 0) {
+      let p1 = documents[0].purchases
+      res.end(JSON.stringify(p1, null, 2));
+    } else {
+      res.end("USER DOES NOT EXIST")
+    }
+  }).catch((err) => {
+    res.end('DATABSE ERROR');
+  })
+})
 
 // Listening to the port 80
 app.listen(port, ()=>{console.log(`Success!!!`)});
