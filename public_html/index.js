@@ -1,4 +1,18 @@
+/**
+ * Author: Abrorjon Asralov, Pulat Uralov
+ * Class: CSC337
+ * Purpose: It is a User side Js file take processes the user
+ * inputs, and interacts with the server side. And server side
+ * is making a connection with the database side in order to save
+ * already existing users' listings for items, or adding new users
+ * to the database side.
+ */
+
 // Gets called every time the user clicks on "Add Account button"
+/**
+ * This is an adder function that gets NEW user's input, and adds
+ * that user to the database as a new user. 
+ */
 function addUser() {
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;
@@ -26,6 +40,13 @@ function addUser() {
 }
 
 // Gets called every time the user clicks "Add item button" 
+/**
+ * This is a adder function that is supposed to take the user
+ * input and it will assign to the user's listing what item
+ * user wants to purchase. It gets user's inputs from the 
+ * UI side and after processing that, it will add it to the
+ * database side
+ */
 function addItem() {
     var title = document.getElementById("itemTitle").value;
     var desc = document.getElementById("descItem").value;

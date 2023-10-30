@@ -22,7 +22,7 @@ db.on('error', () => { console.log('MongoDB connection error:') });
 // Load public_html using express
 app.use(express.static('public_html'));
 
-// -----------------Schema Section-----------------
+// -----------------Schema Section----------------- //
 var Schema = mongoose.Schema;
 
 // Creating a new schema for users
@@ -47,7 +47,7 @@ var Item = mongoose.model('Item', itemSchema);
 
 // Using json 
 app.use(bp.json());
-// ----------------------------REQUEST SECTION----------------------------
+// ----------------------------REQUEST SECTION----------------------------//
 // POST method. Adds a new user with username and password and adds to the database
 app.post('/add/user', (req, res) => {
   let username = req.body.username;
