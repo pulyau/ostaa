@@ -6,6 +6,9 @@ function addUser() {
     if (username == "" || password == "") {
         window.alert("Please enter your username and password")
     } else {
+        // updating the input holders for users
+        document.getElementById("user").value = "";
+        document.getElementById("password").value = "";
         // send to the server using POST method
         let info = {username: username, password: password};
         let p = fetch('add/user', {
